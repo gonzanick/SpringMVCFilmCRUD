@@ -110,9 +110,7 @@ class DatabaseAccessTests {
 		assertEquals(dbFilm.getTitle(), testUpdate.getTitle());
 		
 //		Test Delete
-		test = db.deleteFilm(dbFilm);
-		assertTrue(test);
-		assertNull(db.findFilmById(id));
+
 	
 	}
 

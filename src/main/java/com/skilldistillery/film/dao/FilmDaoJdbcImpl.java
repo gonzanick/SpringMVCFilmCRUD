@@ -1,5 +1,6 @@
 package com.skilldistillery.film.dao;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -300,7 +301,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 				}
 			}
 		}
-		
+
 		return film;
 	}
 	

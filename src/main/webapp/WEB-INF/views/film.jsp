@@ -18,18 +18,23 @@
 				<li>${film.releaseYear}</li>
 				<li>${film.language}</li>
 				<li>${film.rentalDuration}</li>
-				<li>${film.rentalRat}</li>
+				<li>${film.rentalRate}</li>
 				<li>${film.length}</li>
-				<li>${film.replacementCost}</li>
+				<li>${film.replaceCost}</li>
 				<li>${film.rating}</li>
 				<li>${film.specialFeatures}</li>
+				
 			</ul>
 			<h3>Actors</h3>
+			<c:choose>
+				<c:when test="${! empty film.cast }">
 			<ul>
-				<c:forEach var="actor" items="${film.actors}">
+				<c:forEach var="actor" items="${film.cast}">
 					<li>${actor.firstName}${actor.lastName}</li>
 				</c:forEach>
 			</ul>
+				</c:when>
+			</c:choose>
 			<h3>Categories:</h3>
 			<ul>
 				<c:forEach var="category" items="${film.categories}">
