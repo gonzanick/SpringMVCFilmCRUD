@@ -50,6 +50,11 @@
 			<input name="id" type="text" value="${film.id}" hidden="true"></input>
 			<input type="submit" value="Delete Film">
 			</form>
+			
+			<form action="editFilm.do">
+			<input name="id" type="text" value="${film.id}" hidden="true"></input>
+			<input type="submit" value="Edit Film">
+			</form>
 		</c:when>
 		<c:otherwise>
 			<p>No film found</p>
