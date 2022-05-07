@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h2>Welcome to the Film Site</h2>
-	<h3>Search For A Film by ID or Keyword</h3>
+	<h3>Search For A Film by ID</h3>
 	<form action="getFilmData.do" method="GET">
 		<input type="text" name="id" /> <input type="submit"
 			value="Get Film Data" />
@@ -18,6 +18,11 @@
 	<h3>Add A New Film</h3>
 	<form action="newFilm.do" method="GET">
 		<input type="submit" value="Create New Film" />
+	</form>
+	<h3>Search For A Film by Keyword</h3>
+	<form action="getFilmByKeyword.do" method="GET">
+	<input type="text" name="keyword" /> <input type="submit"
+	value="Get Film Data" />
 	</form>
 </body>
 </html>
