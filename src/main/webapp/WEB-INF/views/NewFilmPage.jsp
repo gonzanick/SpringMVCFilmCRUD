@@ -35,13 +35,13 @@
    <input type="text" name="rating"></p>
    
    <h2>Special Features</h2>
-   <p><input type="checkbox" name="specialFeatures">
+   <p><input type="checkbox" name="specialFeatures" value="Trailers">
    <label for="trailers">Trailers</label>
-   <input type="checkbox" id="specialFeatures" name="specialFeatures">
+   <input type="checkbox" id="specialFeatures" name="specialFeatures" value="Commentaries">
    <label for="commentaries">Commentaries</label> 
-   <input type="checkbox" id="specialFeatures" name="specialFeatures">
+   <input type="checkbox" id="specialFeatures" name="specialFeatures" value="Deleted Scenes">
    <label for="deletedScenes">Deleted Scenes</label> 
-   <input type="checkbox" id="specialFeatures" name="specialFeatures">   
+   <input type="checkbox" id="specialFeatures" name="specialFeatures" value="Behind The Scenes">   
    <label for="behindTheScenes">Behind The Scenes</label></p><br>
     
    <input type="submit" value="Submit">

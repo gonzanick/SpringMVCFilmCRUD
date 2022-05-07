@@ -13,6 +13,7 @@
 	<c:choose>
 		<c:when test="${! empty film}">
 			<ul>
+			    <li>${film.id}</li> 
 				<li>${film.title}</li>
 				<li>${film.description}</li>
 				<li>${film.releaseYear}</li>
@@ -45,6 +46,10 @@
 					</ul>
 				</c:when>
 			</c:choose>
+			<form action="deleteFilm.do">
+			<input name="id" type="text" value="${film.id}" hidden="true"></input>
+			<input type="submit" value="Delete Film">
+			</form>
 		</c:when>
 		<c:otherwise>
 			<p>No film found</p>
