@@ -43,14 +43,16 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		StringBuilder sb = new StringBuilder();
 		String[] featuresList = { "Trailers", "Commentaries", "Deleted Scenes", "Behind The Scenes" };
-		for (int i = 0; i < specialFeatures.length; i++) {
-			
+		if (specialFeatures != null && specialFeatures.length > 0) {
+
+			for (int i = 0; i < specialFeatures.length; i++) {
+
 				if (i < specialFeatures.length - 1) {
 					sb.append(specialFeatures[i] + ",");
 				} else {
 					sb.append(specialFeatures[i]);
 				}
-			
+			}
 		}
 
 		Film film = filmDao.addFilm(new Film(title, description, releaseYear, 1, rentalDuration, rentalRate, length,
@@ -66,35 +68,90 @@ public class FilmController {
 		mv.setViewName("WEB-INF/views/film.jsp");
 		return mv;
 	}
-	
-	@RequestMapping(path="deleteFilm.do", method=RequestMethod.GET )
+
+	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.GET)
 	public ModelAndView deleteFilm(RedirectAttributes redirect, String id) {
 		ModelAndView mv = new ModelAndView();
 		int idInt = Integer.parseInt(id);
-		Film film =  filmDao.findFilmById(idInt);
+		Film film = filmDao.findFilmById(idInt);
 		boolean success = filmDao.deleteFilm(film);
-		if(success) {
+		if (success) {
 			mv.setViewName("redirect:deleteSuccess.do");
-		}else {
+		} else {
 			mv.setViewName("redirect:deleteFail.do");
 		}
 		return mv;
 	}
-	
-	@RequestMapping(path="deleteSuccess.do", method=RequestMethod.GET)
+
+	@RequestMapping(path = "deleteSuccess.do", method = RequestMethod.GET)
 	private ModelAndView deleteSuccess() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/views/home.jsp");
-		
-		return mv;
-	}
-	
-	@RequestMapping(path="deleteFail.do", method=RequestMethod.GET)
-	private ModelAndView deleteFail() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/views/error.jsp");
-		
+
 		return mv;
 	}
 
+	@RequestMapping(path = "deleteFail.do", method = RequestMethod.GET)
+	private ModelAndView deleteFail() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/error.jsp");
+
+		return mv;
+	}
+
+	@RequestMapping(path = "editFilm.do", method = RequestMethod.GET)
+	public ModelAndView editFilm(String id) {
+		ModelAndView mv = new ModelAndView();
+		int idInt = Integer.parseInt(id);
+		Film film = filmDao.findFilmById(idInt);
+		mv.addObject("film", film);
+		mv.setViewName("WEB-INF/views/editFilm.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "editFilmCategories.do", method = RequestMethod.GET)
+	public ModelAndView editFilm(RedirectAttributes redir, int id, String title, String description, short releaseYear,
+			int rentalDuration, double rentalRate, int length, double replaceCost, String rating,
+			String... specialFeatures) {
+
+		ModelAndView mv = new ModelAndView();
+		StringBuilder sb = new StringBuilder();
+		String[] featuresList = { "Trailers", "Commentaries", "Deleted Scenes", "Behind The Scenes" };
+		if (specialFeatures != null && specialFeatures.length > 0) {
+
+			for (int i = 0; i < specialFeatures.length; i++) {
+
+				if (i < specialFeatures.length - 1) {
+					sb.append(specialFeatures[i] + ",");
+				} else {
+					sb.append(specialFeatures[i]);
+				}
+			}
+		}
+
+		Film film = new Film(id, title, description, releaseYear, 1, rentalDuration, rentalRate, length, replaceCost,
+				rating, sb.toString());
+		boolean updated = filmDao.updateFilm(film);
+		if (updated) {
+			redir.addFlashAttribute("film", film);
+			mv.setViewName("redirect:updateSucceed.do");
+		} else {
+			mv.setViewName("redirect:updateFail.do");
+		}
+		return mv;
+	}
+
+	@RequestMapping(path = "updateSucceed.do", method = RequestMethod.GET)
+	private ModelAndView updateSucceed() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/home.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "updateFail.do", method = RequestMethod.GET)
+	private ModelAndView updateFail() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/error.jsp");
+		return mv;
+	}
 }
