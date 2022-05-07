@@ -23,30 +23,34 @@
 				<li>${film.replaceCost}</li>
 				<li>${film.rating}</li>
 				<li>${film.specialFeatures}</li>
-				
+
 			</ul>
 			<h3>Actors</h3>
 			<c:choose>
 				<c:when test="${! empty film.cast }">
-			<ul>
-				<c:forEach var="actor" items="${film.cast}">
-					<li>${actor.firstName}${actor.lastName}</li>
-				</c:forEach>
-			</ul>
+					<ul>
+						<c:forEach var="actor" items="${film.cast}">
+							<li>${actor.firstName} ${actor.lastName}</li>
+						</c:forEach>
+					</ul>
 				</c:when>
 			</c:choose>
 			<h3>Categories:</h3>
-			<ul>
-				<c:forEach var="category" items="${film.categories}">
-					<li>${category.name}</li>
-				</c:forEach>
-			</ul>
+			<c:choose>
+				<c:when test="${! empty film.categories }">
+					<ul>
+						<c:forEach var="category" items="${film.categories}">
+							<li>${category}</li>
+						</c:forEach>
+					</ul>
+				</c:when>
+			</c:choose>
 		</c:when>
 		<c:otherwise>
 			<p>No film found</p>
 		</c:otherwise>
 	</c:choose>
- 
-	
+
+
 </body>
 </html>
