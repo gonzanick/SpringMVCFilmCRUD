@@ -16,7 +16,7 @@
 			value="Get Film Data" />
 	</form>
 	<h3>Add A New Film</h3>
-	<form action="NewFilmPage.jsp" method="GET">
+	<form action="WEB-INF/views/NewFilmPage.jsp" method="GET">
 		<input type="submit" value="Create New Film" />
 	</form>
 </body>

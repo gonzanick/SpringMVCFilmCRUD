@@ -41,6 +41,7 @@
 			<p>No film found</p>
 		</c:otherwise>
 	</c:choose>
+ 
 	
 </body>
 </html>
