@@ -100,14 +100,20 @@ class DatabaseAccessTests {
 		id = film.getId();
 		Film dbFilm = db.findFilmById(id);
 		assertEquals(film.getTitle(), dbFilm.getTitle());
+
+//		Test Update
+		testUpdate = new Film(id, "testUpdate", "testDesc", (short) 1994, 1, 3, 3.99, 204, 20.99, "PG",
+				"Deleted Scenes");
 		boolean test = db.updateFilm(testUpdate);
 		assertEquals(true, test);
-		assertTrue(testFilm.getTitle().equals("testTitle"));
+		dbFilm = db.findFilmById(id);
 		assertEquals(dbFilm.getTitle(), testUpdate.getTitle());
-		Film f = db.findFilmById(id);
-		test = db.deleteFilm(testUpdate);
+		
+//		Test Delete
+		test = db.deleteFilm(dbFilm);
 		assertTrue(test);
-		assertNull(f);
+		assertNull(db.findFilmById(id));
+	
 	}
 
 }
