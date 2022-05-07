@@ -369,15 +369,15 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 				updateCount = stmt.executeUpdate();
 				
 //			Replace actor associations from Object
-				sql = "INSERT INTO film_actor (film_id, actor_id) WHERE film_id = ?";
+				sql = "INSERT INTO film_actor (film_id, actor_id)";
 				stmt = conn.prepareStatement(sql);
 				for (Actor actor : film.getCast()) {
 					stmt.setInt(1, film.getId());
 					stmt.setInt(2, actor.getId());
 					updateCount = stmt.executeUpdate();
 				}
-				conn.commit();
 				updated = true;
+				conn.commit();
 			}
 			
 			
@@ -461,7 +461,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 	private PreparedStatement prepStatementAddFilm(Connection conn, Film film) throws SQLException {
 		String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration,"
-				+ " rental_rate, length, replacement_cost, rating, special_features"
+				+ " rental_rate, length, replacement_cost, rating, special_features)"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		PreparedStatement tempStmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		tempStmt.setString(1, film.getTitle());
@@ -483,12 +483,12 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 	}
 	
 	private PreparedStatement prepStatementUpdateFilm(Connection conn, Film film) throws SQLException {
-		String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?, "
-				+ " rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?"
-				+ " WHERE id = ?";
+		
+		String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?,"
+				+ " rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?" + " WHERE id=?";
 		PreparedStatement tempStmt = conn.prepareStatement(sql);
 		tempStmt.setString(1, film.getTitle());
-		tempStmt.setString(2, film.getDescription());
+		tempStmt.setString(2, film .getDescription());
 		tempStmt.setInt(3, film.getReleaseYear());
 //		---HARDCODED---
 		int languageId = 1;
