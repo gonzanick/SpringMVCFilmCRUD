@@ -4,21 +4,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Add a Film</title>
 </head>
 <body>
 
+<h2>Add a Film</h2>
 <form action="addFilm.do" method="GET"> 
-   <label for="title">Title</label> <input type="text" name="title">
-   <label for="description">Description</label> <input type="text" name="description">
-   <label for="releaseYear">Release Year</label> <input type="text" name="releaseYear">
-   <label for="rentalDuration">Rental Duration</label> <input type="text" name="rentalDuration">
-   <label for="rentalRate">Rental Rate</label> <input type="text" name="rentalRate">
-   <label for="length">Length</label> <input type="text" name="length">
-   <label for="replaceCost">Replace Cost</label> <input type="text" name="replaceCost">
-   <label for="rating">Rating</label> <input type="text" name="rating">
-   <label for="specialFeatures">Special Features</label> <input type="text" name="specialFeatures">
+   <p><label for="title">Title</label> 
+   <input type="text" name="title"></p>
    
+   <p><label for="description">Description</label> 
+   <input type="text" name="description"></p>
+   
+   <p><label for="releaseYear">Release Year</label> 
+   <input type="text" name="releaseYear"></p>
+   
+   <p><label for="rentalDuration">Rental Duration</label> 
+   <input type="text" name="rentalDuration"></p>
+   
+   <p><label for="rentalRate">Rental Rate</label>
+   <input type="text" name="rentalRate"></p>
+   
+  <p><label for="length">Length</label>
+   <input type="text" name="length"></p>
+   
+   <p><label for="replaceCost">Replace Cost</label> 
+   <input type="text" name="replaceCost"></p>
+   
+   <p><label for="rating">Rating</label> 
+   <input type="text" name="rating"></p>
+   
+   <h2>Special Features</h2>
+   <p><input type="checkbox" name="specialFeatures">
+   <label for="trailers">Trailers</label>
+   <input type="checkbox" id="specialFeatures" name="specialFeatures">
+   <label for="commentaries">Commentaries</label> 
+   <input type="checkbox" id="specialFeatures" name="specialFeatures">
+   <label for="deletedScenes">Deleted Scenes</label> 
+   <input type="checkbox" id="specialFeatures" name="specialFeatures">   
+   <label for="behindTheScenes">Behind The Scenes</label></p><br>
+    
    <input type="submit" value="Submit">
 	
 

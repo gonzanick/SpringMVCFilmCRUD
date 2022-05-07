@@ -463,7 +463,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 	private PreparedStatement prepStatementAddFilm(Connection conn, Film film) throws SQLException {
 		String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration,"
 				+ " rental_rate, length, replacement_cost, rating, special_features)"
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, (?) );";
 		PreparedStatement tempStmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		tempStmt.setString(1, film.getTitle());
 		tempStmt.setString(2, film.getDescription());

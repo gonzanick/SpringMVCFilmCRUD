@@ -20,8 +20,8 @@ public class FilmController {
 	public String home() {
 		return "WEB-INF/views/home.jsp";
 	}
-	
-	@RequestMapping(path= {"newFilm.do" })
+
+	@RequestMapping(path = { "newFilm.do" })
 	public String newFilmPage() {
 		return "WEB-INF/views/NewFilmPage.jsp";
 	}
@@ -36,17 +36,30 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "addFilm.do",  method = RequestMethod.GET)
-	public ModelAndView addFilm(String title, String description, short releaseYear, int rentalDuration,
-			double rentalRate, int length, double replaceCost, String rating, String specialFeatures, RedirectAttributes redir) {
+	@RequestMapping(path = "addFilm.do", method = RequestMethod.GET)
+	public ModelAndView addFilm(RedirectAttributes redir, String title, String description, short releaseYear,
+			int rentalDuration, double rentalRate, int length, double replaceCost, String rating,
+			String... specialFeatures) {
 		ModelAndView mv = new ModelAndView();
-		Film film = filmDao.addFilm(new Film(title, description, releaseYear, 1, rentalDuration, rentalRate, length, replaceCost, rating,
-				specialFeatures));
+		StringBuilder sb = new StringBuilder();
+		String[] featuresList = { "Trailers", "Commentaries", "Deleted Scenes", "Behind The Scenes" };
+		for (int i = 0; i < specialFeatures.length; i++) {
+			if (specialFeatures[i].equals("on")) {
+				if (i < specialFeatures.length - 1) {
+					sb.append(featuresList[i] + ",");
+				} else {
+					sb.append(featuresList[i]);
+				}
+			}
+		}
+
+		Film film = filmDao.addFilm(new Film(title, description, releaseYear, 1, rentalDuration, rentalRate, length,
+				replaceCost, rating, sb.toString()));
 		redir.addFlashAttribute("film", film);
 		mv.setViewName("redirect:redirectDetails.do");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "redirectDetails.do", method = RequestMethod.GET)
 	private ModelAndView filmDisplay() {
 		ModelAndView mv = new ModelAndView();
