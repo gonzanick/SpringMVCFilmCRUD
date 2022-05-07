@@ -500,6 +500,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		tempStmt.setDouble(8, film.getReplaceCost());
 		tempStmt.setString(9, film.getRating());
 		tempStmt.setString(10, film.getSpecialFeatures());
+		tempStmt.setInt(11, film.getId());
 
 		return tempStmt;
 
