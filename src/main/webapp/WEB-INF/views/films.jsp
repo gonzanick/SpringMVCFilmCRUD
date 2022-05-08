@@ -53,7 +53,7 @@
 								<c:when test="${! empty film.cast }">
 									<ul>
 										<c:forEach var="actor" items="${film.cast}">
-											<li>${actor.firstName}${actor.lastName}</li>
+											<li>${actor.firstName} ${actor.lastName}</li>
 										</c:forEach>
 									</ul>
 								</c:when>
