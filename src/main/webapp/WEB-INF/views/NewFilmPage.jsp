@@ -23,7 +23,8 @@
 		<div class="row">
 			<form action="addFilm.do" method="GET">
 				<p>
-					<label for="title">Title</label> <input type="text" name="title" id="title_input">
+					<label for="title">Title</label> <input type="text" name="title"
+						id="title_input">
 				</p>
 
 				<p>
@@ -56,7 +57,13 @@
 				</p>
 
 				<p>
-					<label for="rating">Rating</label> <input type="text" name="rating">
+					<label for="rating">Rating</label> <select id="ratingSelect"name="rating">
+						<option class="ratingOption" value="G">G</option>
+						<option class="ratingOption" value="PG">PG</option>
+						<option class="ratingOption" value="PG13">PG13</option>
+						<option class="ratingOption" value="R">R</option>
+						<option class="ratingOption" value="NC17">NC17</option>
+					</select>
 				</p>
 
 				<h2>Special Features</h2>

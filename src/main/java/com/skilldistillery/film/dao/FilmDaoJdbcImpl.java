@@ -89,7 +89,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 	}
 
-	
 	public List<Film> findFilmsByActorId(int actorId) {
 		List<Film> films = new ArrayList<>();
 		String user = "student";
@@ -151,7 +150,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		return films;
 	}
 
-	
 	@Override
 	public List<Actor> findActorsByFilmId(int filmId) {
 		List<Actor> actors = new ArrayList<>();
@@ -192,7 +190,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 	}
 
-	
 	public List<Film> findFilmsByKeyword(String keyPhrase) {
 		List<Film> films = new ArrayList<>();
 		String user = "student";
@@ -260,7 +257,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		}
 	}
 
-	
 	@Override
 	public Film addFilm(Film film) {
 		Connection conn = null;
@@ -304,7 +300,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 		return film;
 	}
-	
+
 	@Override
 	public boolean deleteFilm(Film film) {
 		boolean removed = false;
@@ -313,75 +309,74 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
-			
+
 //			Remove Film from film_actor
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, film.getId());
 			int updateCount = stmt.executeUpdate();
-			
+
 //			Remove Film from film
 			sql = "DELETE FROM film WHERE id = ?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, film.getId());
 			updateCount = stmt.executeUpdate();
-			
+
 //			Commit if code finishes
 			conn.commit();
-			
+
 //			update boolean
 			removed = true;
-			
-			
-			
-		} catch (SQLException sqle){
+
+		} catch (SQLException sqle) {
 			sqle.printStackTrace();
-			if(conn != null) {
-				try { 
-					conn.rollback(); 
-				} catch(SQLException sqle2) {
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
 					System.err.println("Error trying rollback");
 				}
 			}
-			
+
 		}
-		
-		
+
 		return removed;
 	}
-	
+
 	@Override
 	public boolean updateFilm(Film film) {
 		boolean updated = false;
 		Connection conn = null;
-				
-		
+
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
-			
+
 			PreparedStatement stmt = prepStatementUpdateFilm(conn, film);
 			int updateCount = stmt.executeUpdate();
-			if(updateCount == 1) {
-				
+			if (updateCount == 1) {
+
+				if (film.getCast() != null && !film.getCast().isEmpty()) {
+
 //			Remove existing actor associations from database
-				String sql = "DELETE FROM film_actor WHERE film_id = ?";
-				stmt = conn.prepareStatement(sql);
-				stmt.setInt(1, film.getId());
-				updateCount = stmt.executeUpdate();
-				
-//			Replace actor associations from Object
-				sql = "INSERT INTO film_actor (film_id, actor_id)";
-				stmt = conn.prepareStatement(sql);
-				for (Actor actor : film.getCast()) {
+					String sql = "DELETE FROM film_actor WHERE film_id = ?";
+					stmt = conn.prepareStatement(sql);
 					stmt.setInt(1, film.getId());
-					stmt.setInt(2, actor.getId());
 					updateCount = stmt.executeUpdate();
+
+//			Replace actor associations from Object
+					sql = "INSERT INTO film_actor (film_id, actor_id)";
+					stmt = conn.prepareStatement(sql);
+					for (Actor actor : film.getCast()) {
+						stmt.setInt(1, film.getId());
+						stmt.setInt(2, actor.getId());
+						updateCount = stmt.executeUpdate();
+					}
 				}
+				
 				updated = true;
 				conn.commit();
 			}
-			
-			
+
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
@@ -392,16 +387,10 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 				}
 			}
 		}
-		
-		
-		
-		
+
 		return updated;
 	}
 
-	
-	
-	
 	private PreparedStatement prepStatementLanguage(Connection conn, int langId) throws SQLException {
 		String sql = "SELECT name FROM language WHERE id = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -482,14 +471,14 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		return tempStmt;
 
 	}
-	
+
 	private PreparedStatement prepStatementUpdateFilm(Connection conn, Film film) throws SQLException {
-		
+
 		String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?,"
 				+ " rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?" + " WHERE id=?";
 		PreparedStatement tempStmt = conn.prepareStatement(sql);
 		tempStmt.setString(1, film.getTitle());
-		tempStmt.setString(2, film .getDescription());
+		tempStmt.setString(2, film.getDescription());
 		tempStmt.setInt(3, film.getReleaseYear());
 //		---HARDCODED---
 		int languageId = 1;
@@ -506,8 +495,5 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		return tempStmt;
 
 	}
-	
-	
-	
-	
+
 }

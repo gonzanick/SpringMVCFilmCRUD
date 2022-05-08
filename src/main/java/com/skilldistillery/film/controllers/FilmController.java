@@ -29,9 +29,19 @@ public class FilmController {
 	}
 
 	@RequestMapping(path = "getFilmData.do", method = RequestMethod.GET)
-	public ModelAndView getFilmById(int id) {
+	public ModelAndView getFilmById(String id) {
 		ModelAndView mv = new ModelAndView();
-		Film film = filmDao.findFilmById(id);
+		int idInt = 0;
+		try {
+			idInt = Integer.parseInt(id);
+			
+		} catch (NumberFormatException e) {
+			mv.addObject("string", "Numeric input is required to search for film by ID number");
+			mv.setViewName("WEB-INF/views/error.jsp");
+			return mv;
+		}
+		
+		Film film = filmDao.findFilmById(idInt);
 		mv.addObject("film", film);
 		mv.setViewName("WEB-INF/views/film.jsp");
 //		NOT DONE
