@@ -1,10 +1,10 @@
 # SpringMVCFilmCRUD
 
 
-##Overview
+## Overview
 This team project saw three individuals putting several technologies and design patterns into practice to produce a Full-Stack    project which creates, reads, updates, and deletes (CRUD) from a film database while collaborating remotely via Zoom and Slack.
 
-##User Stories
+## User Stories
 
 * User Story 1: A user can enter a Film's ID and see the details of the film in a web page. If the film is not found, they see an appropriate message.
 
@@ -16,7 +16,7 @@ This team project saw three individuals putting several technologies and design 
 
 * User Story 6: When a film's details are displayed, its actors and categories are also listed.
 
-##Technologies 
+## Technologies 
 
 * Java
 * Spring MVC
