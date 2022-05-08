@@ -118,7 +118,6 @@ public class FilmController {
 
 		ModelAndView mv = new ModelAndView();
 		StringBuilder sb = new StringBuilder();
-		String[] featuresList = { "Trailers", "Commentaries", "Deleted Scenes", "Behind The Scenes" };
 		if (specialFeatures != null && specialFeatures.length > 0) {
 
 			for (int i = 0; i < specialFeatures.length; i++) {
@@ -165,6 +164,11 @@ public class FilmController {
 		
 		mv.setViewName("WEB-INF/views/films.jsp");
 		return mv;
+	}
+	
+	@RequestMapping(path="css.do", method=RequestMethod.GET)
+	private String cssLink() {
+		return "WEB-INF/views/style/main.css";
 	}
 	
 }

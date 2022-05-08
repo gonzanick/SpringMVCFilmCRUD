@@ -56,7 +56,7 @@
 				id="specialFeatures" name="specialFeatures" value="Deleted Scenes">
 			<label for="deletedScenes">Deleted Scenes</label> <input
 				type="checkbox" id="specialFeatures" name="specialFeatures"
-				value="Behind The Scenes"> <label for="behindTheScenes">Behind
+				value="Behind the Scenes"> <label for="behindTheScenes">Behind
 				The Scenes</label>
 		</p>
 		<br>

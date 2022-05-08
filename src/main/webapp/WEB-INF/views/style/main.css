@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+body {
+	background-color: lightgrey;
+	font-family: Garamond serif;
+}
+
+.header{
+	text-decoration: underline;
+	font-variant: all-caps;
+}
+
+.subHeader {
+	text-decoration: underline;
+	font-variant: small-caps;
+}
+
+#site_title {
+	font-family: Trebuchet MS sans-serif;
+	font-variant: small-caps;
+	font-size: 50px;
+	
+}
+
+hr {
+  opacity: 0.5;
+  border-top: 3px solid #735E73;
+  margin-bottom: 35px;
+}
+
+.sub_button {
+	background-color: gray;
+	color: black;
+	border-style: double;
+	border-color: darkgray;
+	border-collapse: collapse;
+	border-radius: 15%;
+	margin: 5px;
+	transition: all 0.15s;
+}
+
+input[type=text]{
+	border-style: double;
+	border-color: darkgray;
+	border-collapse: collapse;
+	border-radius: 10%;
+}
+
+.film_by_id{
+	background-text: 'e.g. 42';
+}
+
+.description{
+	width: 300px;
+}
+
+.edit_and_delete_col {
+	text-align: center;
+}
