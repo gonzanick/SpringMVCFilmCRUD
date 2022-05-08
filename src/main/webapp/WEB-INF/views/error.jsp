@@ -17,15 +17,22 @@
 
 </head>
 <body>
-	<h2>Error</h2>
-	<p>Your input is invalid</p>
+<div class="container">
+<div class="row">
+	<h2 id="site_title">Unable to complete requested action</h2>
+	<hr>
+	<h3 class="error_message">${string}</h3>
+</div>
+<div class="row">
 	<form action="home.do" method="GET">
-		<input type="submit" value="Home" />
+		<input type="submit" value="Return Home" class="sub_button"/>
 	</form>
+</div>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
+</div>
 </body>
 </html>

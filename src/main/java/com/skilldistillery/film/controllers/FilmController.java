@@ -44,7 +44,6 @@ public class FilmController {
 			String... specialFeatures) {
 		ModelAndView mv = new ModelAndView();
 		StringBuilder sb = new StringBuilder();
-		String[] featuresList = { "Trailers", "Commentaries", "Deleted Scenes", "Behind The Scenes" };
 		if (specialFeatures != null && specialFeatures.length > 0) {
 
 			for (int i = 0; i < specialFeatures.length; i++) {
@@ -96,6 +95,8 @@ public class FilmController {
 	@RequestMapping(path = "deleteFail.do", method = RequestMethod.GET)
 	private ModelAndView deleteFail() {
 		ModelAndView mv = new ModelAndView();
+		String deleteFailed = "Unable to delete film due to database dependencies";
+		mv.addObject("string", deleteFailed);
 		mv.setViewName("WEB-INF/views/error.jsp");
 
 		return mv;
@@ -152,6 +153,8 @@ public class FilmController {
 	@RequestMapping(path = "updateFail.do", method = RequestMethod.GET)
 	private ModelAndView updateFail() {
 		ModelAndView mv = new ModelAndView();
+		String updateFailed = "Update failed";
+		mv.addObject("string", updateFailed);
 		mv.setViewName("WEB-INF/views/error.jsp");
 		return mv;
 	}

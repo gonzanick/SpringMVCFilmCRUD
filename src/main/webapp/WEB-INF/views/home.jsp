@@ -21,6 +21,7 @@
 <div class="container">
 	<div class="row" id="site_title">
 		<h2>Welcome to the Film Site</h2>
+		<hr>
 	</div>
 
 	<div class="row">

@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
 body {
-	background-color: lightgrey;
+	background-color: darkslategrey;
 	font-family: Garamond serif;
+	color: cornsilk;
 }
 
 .header{
@@ -24,19 +25,32 @@ body {
 
 hr {
   opacity: 0.5;
-  border-top: 3px solid #735E73;
+  border: 3px solid;
   margin-bottom: 35px;
+  border-color: bisque;
 }
 
 .sub_button {
-	background-color: gray;
-	color: black;
+	background-color: rgb(101, 68, 47);
+	color: bisque;
 	border-style: double;
-	border-color: darkgray;
+	border-color: rgb(131, 98, 77);
 	border-collapse: collapse;
 	border-radius: 15%;
 	margin: 5px;
+	padding-top: 8px;
+	padding-bottom: 8px;
 	transition: all 0.15s;
+}
+
+.sub_button:hover{
+	opacity: 0.9;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.sub_button:active{
+	opacity: 0.7;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
 }
 
 input[type=text]{
@@ -44,16 +58,51 @@ input[type=text]{
 	border-color: darkgray;
 	border-collapse: collapse;
 	border-radius: 10%;
+	background-color: dimgrey;
+	color: cornsilk;
+	margin-left: 10px;
 }
 
-.film_by_id{
-	background-text: 'e.g. 42';
+input[type=text]:autofill{
+	border-style: double;
+	border-color: darkgray;
+	border-collapse: collapse;
+	border-radius: 10%;
+	background-color: dimgrey;
+	color: cornsilk;
+	margin-left: 10px;
+}
+
+
+input[type=checkbox]:checked{
+	accent-color: rgb(101, 68, 47);
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+input::placeholder{
+	color: bisque;
 }
 
 .description{
 	width: 300px;
 }
 
+#description_input{
+	width: 900px;
+	border-radius: 8% !important; 
+}
+
+#title_input{
+	width: 300px;
+}
+
 .edit_and_delete_col {
 	text-align: center;
+}
+
+.error_message{
+	font-style: italic;
+	color: red;
+	margin-bottom: 70px;
+	
 }

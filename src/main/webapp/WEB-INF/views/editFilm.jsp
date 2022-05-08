@@ -21,12 +21,12 @@
 		<input type="text" name="id" value="${film.id}" hidden="true">
 		<p>
 			<label for="title">Title</label> <input type="text" name="title"
-				value="${film.title}">
+				value="${film.title}" id="title_input">
 		</p>
 
 		<p>
 			<label for="description">Description</label> <input type="text"
-				name="description" value="${film.description}">
+				name="description" id="description_input" value="${film.description}">
 		</p>
 
 		<p>
@@ -71,7 +71,7 @@
 				value="Behind The Scenes"> <label for="behindTheScenes">Behind
 				The Scenes</label>
 		</p>
-		<br> <input type="submit" value="Submit">
+		<br> <input type="submit" value="Submit" class="sub_button">
 
 
 	</form>
