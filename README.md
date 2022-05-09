@@ -2,7 +2,7 @@
 
 
 ## Overview
-This team project saw three individuals putting several technologies and design patterns into practice to produce a Full-Stack project that creates, reads, updates, and deletes (CRUD) from a film database while collaborating remotely via Zoom and Slack. The user starts on a welcome page with the option to search for a film by ID or Keyword, and to add a new film. The user stories below describe each option the user has in more detail.
+This team project saw three individuals putting several technologies and design patterns into practice to produce a Full-Stack project that creates, reads, updates, and deletes (CRUD) from a film database while collaborating remotely via Zoom, Discord, and Slack. The user starts on a welcome page with the option to search for a film by ID or Keyword, and to add a new film. The user stories below describe each option the user has in more detail.
 
 ## User Stories
 
@@ -24,7 +24,14 @@ This team project saw three individuals putting several technologies and design 
 * SQL
 * Git
 * mySQL
+* CSS
 
+## Lessons Learned
+
+* Expanded upon and improved use of controllers in a working program
+* Further exposure and practice utilizing HTML and Java programming and to be able to have both perform successfully without any issues or errors to the program
+* Improved communication skills through coordinating on who would do what portion and when. Team was also successful in pair programming and able to work as a whole unit, increasing productivity and learning experience
+*  Successfully was able to complete a Full-Stack Java program utilizing all tools available and while working as a small team
 
 ## Project Owners
 [Mason Keeney](https://github.com/Mason-Keeney)
